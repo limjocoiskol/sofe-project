@@ -1,0 +1,81 @@
+/* Clinic landing page styles */
+:root{
+  --accent:#1465a7;
+  --accent-dark:#0f4f83;
+  --muted:#e6f2fb;
+  --hero-overlay: rgba(5,55,95,0.35);
+  --hero-color: #0e9bb3;
+}
+
+*{box-sizing: border-box;margin:0;padding:0;font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+
+html,body{height:100%;}
+
+.site-header{
+  position:fixed;left:0;top:0;right:0;display:flex;align-items:center;justify-content:center;z-index:999;padding:12px 28px 12px 28px;transition:background 240ms ease, padding 200ms ease, box-shadow 200ms ease;pointer-events:auto;
+  /* transparent by default so hero shows through */
+  background: transparent;
+  color: #fff;
+}
+
+.site-header.scrolled{
+  background: rgba(6,20,28,0.32);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(2,8,12,0.45);
+  padding:8px 20px;
+}
+
+.logo-wrap{position:absolute;left:50%;transform:translateX(-50%);top:28px}
+.logo-circle{width:92px;height:92px;border-radius:50%;background:rgba(255,255,255,0.08);display:grid;place-items:center;font-weight:700;color:#fff;border:4px solid rgba(255,255,255,0.06)}
+
+.nav{position:absolute;right:56px;top:36px}
+.nav-list{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-list a{color:#fff;text-decoration:none;padding:10px 10px;font-weight:600;display:inline-block;opacity:0;transform:translateY(-8px);transition:transform 360ms cubic-bezier(.2,.9,.2,1),opacity 360ms, border-color 240ms}
+.nav-list a.active{border-bottom:4px solid #fff}
+.nav-list a.show{opacity:1;transform:translateY(0)}
+.nav-list a:focus{outline:3px solid rgba(255,255,255,0.12);outline-offset:4px}
+
+/* animated underline transition (for active state) */
+.nav-list a{border-bottom:4px solid transparent}
+.nav-list a.active{border-bottom-color:#fff}
+
+/* when header is scrolled use the darker palette */
+.site-header.scrolled{ background: rgba(6,20,28,0.32); color: #642626; }
+.site-header.scrolled .nav-list a{ color: #642626; }
+.site-header.scrolled .nav-list a.active{ border-bottom-color: #642626; }
+
+.hero{
+  min-height:100vh;background-image: url();
+  background-size:cover;background-position:center;position:relative;display:grid;place-items:center;color:#fff
+}
+.hero .overlay{position:absolute;inset:0;background:var(--hero-overlay)}
+.hero-inner{position:relative;z-index:8;text-align:center;padding:30px;max-width:920px}
+.hero h1{font-family:'Oswald',sans-serif;font-size:110px;letter-spacing:2px;margin-bottom:8px}
+.hero .lead{font-size:22px;opacity:0.95;margin-bottom:22px}
+.btn{display:inline-block;background:#1e4f8a;padding:14px 22px;border-radius:8px;color:#fff;text-decoration:none;font-weight:700}
+
+.section{padding:110px 24px}
+.section .content{max-width:980px;margin:0 auto;color:#0b2b3a}
+.about{background:#fff}
+.contact{background:#f6fbff}
+
+.services-title{margin-top:26px;margin-bottom:14px;color:#0b2b3a}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.service-card{background:#fff;border:1px solid rgba(10,40,60,0.04);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(10,30,40,0.04);}
+.svc-icon{font-size:34px;margin-bottom:8px}
+.service-card h4{margin-bottom:8px}
+.service-card p{font-size:14px;color:#31515f}
+
+@media (max-width:980px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
+
+.contact-form{margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.contact-form input,.contact-form textarea{padding:12px;border-radius:8px;border:1px solid rgba(10,40,60,0.06)}
+
+.site-footer{padding:48px 24px;text-align:center;color:rgba(10,40,60,0.7)}
+
+@media (max-width:900px){
+  .logo-wrap{left:18px;transform:none}
+  .nav{right:18px}
+  .hero h1{font-size:48px}
+}
